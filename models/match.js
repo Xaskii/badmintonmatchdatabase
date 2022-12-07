@@ -1,18 +1,24 @@
 const mongoose = require('mongoose')
 
 const matchSchema = new mongoose.Schema({
-  date: Date,
+  date: {
+    required: true,
+    type: Date,
+  },
   players: {
     home: String,
     away: String,
   },
-  note: String,
+  note: {
+    required: true,
+    type: String,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
   locationTag: String,
-  tags: String,
+  tags: [String],
 })
 
 matchSchema.set('toJSON', {
