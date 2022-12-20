@@ -10,6 +10,16 @@ const matchSchema = new mongoose.Schema({
     home: String,
     away: String,
   },
+  score: {
+    home: {
+      required: true,
+      type: Number,
+    },
+    away: {
+      required: true,
+      type: Number,
+    },
+  },
   note: {
     required: true,
     type: String,
