@@ -4,6 +4,7 @@ const matchSchema = new mongoose.Schema({
   date: {
     required: true,
     type: Date,
+    default: Date.now(),
   },
   players: {
     home: String,
