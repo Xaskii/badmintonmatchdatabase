@@ -1,5 +1,7 @@
 const matchRouter = require('express').Router()
 const Match = require('../models/match')
+const User = require('../models/user')
+const jwt = require('jsonwebtoken')
 
 matchRouter.get('/', async (req, res) => {
   const matches = await Match.find({}).populate('user', 'username')
@@ -8,7 +10,16 @@ matchRouter.get('/', async (req, res) => {
 
 matchRouter.post('/', async (req, res) => {
   const body = req.body
-  const match = new Match(body)
+
+  const token = req.token
+  const decodedToken = jwt.verify(token, process.env.SECRET)
+
+  const user = await User.findById(decodedToken.id)
+
+  const match = new Match({
+    ...body,
+    user: user._id,
+  })
 
   const savedMatch = await match.save()
   res.status(201).json(savedMatch)
@@ -23,4 +34,5 @@ matchRouter.delete('/', async (req, res) => {
   await Match.deleteMany({})
   res.status(204).end()
 })
+
 module.exports = matchRouter

@@ -1,7 +1,9 @@
-const bcrypt = require('bcrypt')
 const usersRouter = require('express').Router()
+const bcrypt = require('bcrypt')
 const User = require('../models/user')
 
+// rewrite authentication if you're bored later
+// this just feels kinda weird
 usersRouter.post('/', async (request, response) => {
   const { username, name, password } = request.body
 
