@@ -4,6 +4,8 @@ import './App.css'
 import MatchStack from './components/MatchStack'
 
 function App() {
+  useEffect(() => {})
+
   return (
     <div className='App'>
       <Heading mx={2} my={1} textAlign={'center'}>
