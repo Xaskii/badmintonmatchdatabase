@@ -24,11 +24,11 @@ app.use(cors())
 app.use(express.json())
 
 app.use(middleware.tokenExtractor)
+app.use(morgan('combined'))
 
 app.use('/api/matches', matchesRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
 
-app.use(morgan('combined'))
 
 module.exports = app
