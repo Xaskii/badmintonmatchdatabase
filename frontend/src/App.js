@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react'
-import { Box, Heading } from '@chakra-ui/react'
-import './App.css'
+import { useState, useEffect } from 'react'
+import { Box, Center, Heading } from '@chakra-ui/react'
+import { initialMatches } from './helper'
+import matchService from './services/matches'
 import MatchStack from './components/MatchStack'
+import './App.css'
 
 function App() {
-  useEffect(() => {})
-
   return (
     <div className='App'>
       <Heading mx={2} my={1} textAlign={'center'}>
         Badminton Match Database
       </Heading>
-      <Box display={'flex'} justifyContent={'center'}>
+      <Center>
         <MatchStack />
-      </Box>
+      </Center>
     </div>
   )
 }

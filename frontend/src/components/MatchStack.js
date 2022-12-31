@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import {
   Stack,
   Box,
@@ -10,68 +9,20 @@ import {
   AccordionButton,
   AccordionPanel,
 } from '@chakra-ui/react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { initializeMatches } from '../reducers/matchReducer'
 import { FlagCanada } from '../icons/FlagCanada'
 
-const initialMatches = [
-  {
-    players: {
-      home: 'spring',
-      away: 'autumn',
-    },
-    score: {
-      home: 21,
-      away: 10,
-    },
-    date: '2022-12-22T00:00:00.000Z',
-    note: 'not so amazing',
-    user: {
-      username: 'spring',
-      id: '639ce4b32b63a9eb715be7d2',
-    },
-    tags: [],
-    id: '63a5fa5dbca30f76fd8d4f7d',
-  },
-  {
-    players: {
-      home: 'spring',
-      away: 'autumn',
-    },
-    score: {
-      home: 10,
-      away: 21,
-    },
-    date: '2022-12-22T00:00:00.000Z',
-    note: 'really amazing',
-    user: {
-      username: 'spring',
-      id: '639ce4b32b63a9eb715be7d2',
-    },
-    tags: [],
-    id: '63a5fa72bca30f76fd8d4f80',
-  },
-  {
-    players: {
-      home: 'spring',
-      away: 'natalia',
-    },
-    score: {
-      home: 21,
-      away: 42,
-    },
-    date: '2022-12-23T00:00:00.000Z',
-    note: 'long game',
-    user: {
-      username: 'spring',
-      id: '639ce4b32b63a9eb715be7d2',
-    },
-    tags: [],
-    id: '63a5fec3bca30f76fd8d4f8a',
-  },
-]
 const text = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`
 
 const MatchStack = () => {
-  const [matches, setMatches] = useState(initialMatches)
+  const matches = useSelector((state) => state.matches)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(initializeMatches())
+  }, [dispatch])
+
   return (
     <Stack spacing={8} maxWidth={'600px'} width={'600px'} mx={2}>
       {matches &&
