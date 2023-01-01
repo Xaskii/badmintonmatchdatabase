@@ -32,7 +32,7 @@ const MatchStack = () => {
           const date = dateObject.toLocaleDateString()
           return (
             <>
-              <Box key={m.id} px={5} py={3} shadow='base'>
+              <Box key={m.id} px={5} py={3} my={2} shadow='base'>
                 <Center>
                   <Heading fontSize='l'>{date}</Heading>
                 </Center>
