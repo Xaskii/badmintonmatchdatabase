@@ -1,19 +1,17 @@
-import { useState, useEffect } from 'react'
-import { Box, Center, Heading } from '@chakra-ui/react'
-import { initialMatches } from './helper'
-import matchService from './services/matches'
-import MatchStack from './components/MatchStack'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import MatchStack from './components/MatchStack'
+import Login from './components/Login'
+import Header from './components/Header'
 
 function App() {
   return (
     <div className='App'>
-      <Heading mx={2} my={1} textAlign={'center'}>
-        Badminton Match Database
-      </Heading>
-      <Center>
-        <MatchStack />
-      </Center>
+      <Header />
+      <Routes>
+        <Route path='/' element={<MatchStack />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
     </div>
   )
 }
