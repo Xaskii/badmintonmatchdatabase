@@ -11,15 +11,15 @@ import {
   AccordionPanel,
 } from '@chakra-ui/react'
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppSelector, useAppDispatch } from '../hooks'
 import { initializeMatches } from '../reducers/matchReducer'
 import { FlagCanada } from '../icons/FlagCanada'
 
 const text = `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`
 
 const MatchStack = () => {
-  const matches = useSelector((state) => state.matches)
-  const dispatch = useDispatch()
+  const matches = useAppSelector((state) => state.matches)
+  const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(initializeMatches())
   }, [dispatch])
