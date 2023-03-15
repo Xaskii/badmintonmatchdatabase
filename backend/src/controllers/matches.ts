@@ -1,3 +1,4 @@
+export {}
 const matchRouter = require('express').Router()
 const Match = require('../models/match')
 const User = require('../models/user')

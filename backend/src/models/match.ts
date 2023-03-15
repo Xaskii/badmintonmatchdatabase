@@ -1,5 +1,6 @@
+export {}
 const mongoose = require('mongoose')
-
+console.log('test')
 const matchSchema = new mongoose.Schema({
   date: {
     required: true,
